@@ -49,9 +49,9 @@ The Svelte component from this demo is located [here](https://github.com/brakmic
 
 I've tried to produce a demo that does something more complex than `Hello World!`
 
-* It fetches JSON-data from a remote server 
-* Displays those data in a nicely looking table (jquery.dataTables) 
-* It even displays a toast! :-)
+* It fetches JSON-data from a [remote server](http://northwind.servicestack.net/) 
+* Displays those data in a nicely looking [table](https://datatables.net/) 
+* It even displays a [toast](http://codeseven.github.io/toastr/)! :-)
 
 The fetch-functionality is located in a [separate API](https://github.com/brakmic/Svelte-TypeScript-WebPack-Boilerplate/blob/master/src/app/api/fetch.ts) that'll be of some use to you in more complex scenarios, I hope.
 
