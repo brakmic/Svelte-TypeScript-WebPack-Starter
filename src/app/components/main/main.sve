@@ -45,19 +45,19 @@ toastr.options.positionClass = 'toast-top-center';
 toastr.options.timeOut = 2000;
 
 export default {
-    data: function() {
+    data: function() { // default data: https://svelte.technology/guide#default-data
         return {
-            name: 'World',
             tableName: 'Customers',
             url: 'http://northwind.servicestack.net/customers.json',
             tableInstance: undefined,
             customers: []
         };
     },
-    onrender: function() {
-      this.initTable();  
+    onrender: function() { // life-cycle hook
+      this.initTable();    // see: https://svelte.technology/guide#lifecycle-hooks
     },
-    methods: {
+    methods: {  // svelte's custom methods
+                // see: https://svelte.technology/guide#custom-methods
         initTable: function() {
          const table = $('#books').DataTable({
              processing: true,
@@ -75,12 +75,14 @@ export default {
                  { 'data': 'Country' },
              ],
           });
-          this.set({tableInstance : table });
+          this.set({tableInstance : table }); // // https://svelte.technology/guide#component-set-data-
           table.on('select', (e, dt, type, indexes) => {
+              // event handling for jquery.dataTables
+              // see: https://datatables.net/examples/advanced_init/dt_events.html
           });
         },
         updateTable: function() {
-            const table = this.get('tableInstance');
+            const table = this.get('tableInstance'); // https://svelte.technology/guide#component-get-key-
             if (!_.isNil(table)) {
                 table.clear();
                 table.rows.add(this.get('customers'));
