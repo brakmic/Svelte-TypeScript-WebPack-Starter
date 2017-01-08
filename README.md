@@ -37,7 +37,7 @@ import { Main } from 'app/components';
 Main('#svelte-app');
 ```
 
-In the script above we import the Main function that takes a CSS selector to hook up the Svelte component. The definition of the component itself is located [main.sve](https://github.com/brakmic/Svelte-TypeScript-WebPack-Boilerplate/blob/master/src/app/components/main/main.sve).
+In the script above we import the [Main function](https://github.com/brakmic/Svelte-TypeScript-WebPack-Boilerplate/blob/master/src/app/components/main/main.ts#L4) that takes a CSS selector to hook up the Svelte component. The definition of the component itself is located [main.sve](https://github.com/brakmic/Svelte-TypeScript-WebPack-Boilerplate/blob/master/src/app/components/main/main.sve).
 
 There's no rule that Svelte components have to be named with a *.sve extension. It's just my own way of distinguishing between 'ordinary' HTMLs and those containing Svelte code. If you don't like this approach, simply change the regex for svelte-loader in [webpack.common.js](https://github.com/brakmic/Svelte-TypeScript-WebPack-Boilerplate/blob/master/config/webpack.common.js#L114).
 
