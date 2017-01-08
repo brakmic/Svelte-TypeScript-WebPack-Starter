@@ -43,9 +43,9 @@ There's no rule that Svelte components have to be named with a *.sve extension. 
 
 The Svelte component from this demo is located [here](https://github.com/brakmic/Svelte-TypeScript-WebPack-Boilerplate/blob/master/src/app/components/main/main.sve) and comprises of three parts:
 
-* Style (between `<style>` tags)
-* Structure (between `<div>` tags)
-* Logic (between `<script>` tags)
+* [Style](https://github.com/brakmic/Svelte-TypeScript-WebPack-Boilerplate/blob/master/src/app/components/main/main.sve#L1) (between `<style>` tags)
+* [Structure](https://github.com/brakmic/Svelte-TypeScript-WebPack-Boilerplate/blob/master/src/app/components/main/main.sve#L6) (between `<div>` tags)
+* [Logic](https://github.com/brakmic/Svelte-TypeScript-WebPack-Boilerplate/blob/master/src/app/components/main/main.sve#L40) (between `<script>` tags)
 
 I've tried to produce a demo that does something more complex than `Hello World!`
 
