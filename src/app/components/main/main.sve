@@ -11,7 +11,7 @@
                     {{ tableName }}
                 </div>
                 <div class="panel-body">
-                    <table id="books" class="table table-striped
+                    <table id="customers" class="table table-striped
                                             table-bordered
                                             table-hover
                                             table-responsive" 
@@ -59,7 +59,7 @@ export default {
     methods: {  // svelte's custom methods
                 // see: https://svelte.technology/guide#custom-methods
         initTable: function() {
-         const table = $('#books').DataTable({
+         const table = $('#customers').DataTable({
              processing: true,
              select: true,
              searching: true,
