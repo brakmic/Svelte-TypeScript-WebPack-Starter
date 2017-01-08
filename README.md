@@ -39,7 +39,7 @@ Main('#svelte-app');
 
 In the script above we import the [Main function](https://github.com/brakmic/Svelte-TypeScript-WebPack-Boilerplate/blob/master/src/app/components/main/main.ts#L4) that takes a CSS selector to hook up the Svelte component. The definition of the component itself is located [main.sve](https://github.com/brakmic/Svelte-TypeScript-WebPack-Boilerplate/blob/master/src/app/components/main/main.sve).
 
-After a successful start the app will also provide a reference to itself in a globally available object `window.app`. 
+After a successful start the app will also provide a [reference](https://github.com/brakmic/Svelte-TypeScript-WebPack-Boilerplate/blob/master/src/app/components/main/main.ts#L9) to itself in a globally available object `window.app`. 
 
 Of course, this is for testing purposes only. 
 
