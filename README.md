@@ -14,7 +14,6 @@ A basic boilerplate for Svelte Framework containing:
 
 <img src="http://i.giphy.com/26FKSF8fXF2JD7CZa.gif">
 
-
 This demo uses [jquery.dataTables](https://datatables.net/) and [Toastr](http://codeseven.github.io/toastr/) plugins.
 
 ## Structure
