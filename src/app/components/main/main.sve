@@ -1,0 +1,99 @@
+<style>
+    .panel-custom {
+        margin-top: 2em;
+    }
+</style>
+<div class="container container-fluid">
+<div class="col col-lg-12 col-md-12 col-sm-10">
+    <div class="row">
+        <div class="panel panel-default panel-primary panel-custom">
+                <div class="panel-heading">
+                    {{ tableName }}
+                </div>
+                <div class="panel-body">
+                    <table id="books" class="table table-striped
+                                            table-bordered
+                                            table-hover
+                                            table-responsive" 
+                                            cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Company</th>
+                                <th>Title</th>
+                                <th>Contact</th>
+                                <th>Phone</th>
+                                <th>Address</th>
+                                <th>City</th>
+                                <th>Country</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="btn-toolbar">
+                <button class="btn btn-default btn-success" on:click="loadData()">Load</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+import * as _ from 'lodash';
+import { fetch } from 'app/api';
+import * as toastr from 'vendor/toastr/toastr.min';
+toastr.options.positionClass = 'toast-top-center';
+toastr.options.timeOut = 2000;
+
+export default {
+    data: function() {
+        return {
+            name: 'World',
+            tableName: 'Customers',
+            url: 'http://northwind.servicestack.net/customers.json',
+            tableInstance: undefined,
+            customers: []
+        };
+    },
+    onrender: function() {
+      this.initTable();  
+    },
+    methods: {
+        initTable: function() {
+         const table = $('#books').DataTable({
+             processing: true,
+             select: true,
+             searching: true,
+             data: this.get('customers'),
+             columns:  [
+                 { 'data': 'Id' },
+                 { 'data': 'CompanyName' },
+                 { 'data': 'ContactTitle' },
+                 { 'data': 'ContactName' },
+                 { 'data': 'Phone' },
+                 { 'data': 'Address' },
+                 { 'data': 'City' },
+                 { 'data': 'Country' },
+             ],
+          });
+          this.set({tableInstance : table });
+          table.on('select', (e, dt, type, indexes) => {
+          });
+        },
+        updateTable: function() {
+            const table = this.get('tableInstance');
+            if (!_.isNil(table)) {
+                table.clear();
+                table.rows.add(this.get('customers'));
+                table.draw();
+                toastr.info(`Retrieved data from ${this.get('url')}`, 'Info');
+            }
+        },
+        loadData: function() {
+            fetch.doFetch(this.get('url')).then(json => {
+                  this.set({ customers: json.Customers });
+                  this.updateTable();
+              });
+        }
+    }
+}
+</script>
