@@ -1,6 +1,6 @@
 # Svelte-TypeScript-WebPack-Boilerplate
 
-A basic boilerplate for Svelte Framework containing: 
+A basic boilerplate for [Svelte](https://svelte.technology/) Framework containing: 
 
 * TypeScript
 * WebPack
