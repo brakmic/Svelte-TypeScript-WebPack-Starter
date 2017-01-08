@@ -55,7 +55,7 @@ export default {
     },
     onrender: function() { // life-cycle hook
       this.initTable();    // see: https://svelte.technology/guide#lifecycle-hooks
-      this.observe('customers', customers => { // watch for changes in 'customers
+      this.observe('customers', customers => { // watch for changes in 'customers'
           if (!_.isEmpty(customers))           // see: https://svelte.technology/guide#component-observe-key-callback-options-
           this.updateTable();
       });
