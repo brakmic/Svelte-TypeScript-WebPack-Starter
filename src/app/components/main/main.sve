@@ -55,6 +55,10 @@ export default {
     },
     onrender: function() { // life-cycle hook
       this.initTable();    // see: https://svelte.technology/guide#lifecycle-hooks
+      this.observe('customers', customers => { // watch for changes in 'customers
+          if (!_.isEmpty(customers))           // see: https://svelte.technology/guide#component-observe-key-callback-options-
+          this.updateTable();
+      });
     },
     methods: {  // svelte's custom methods
                 // see: https://svelte.technology/guide#custom-methods
@@ -93,7 +97,6 @@ export default {
         loadData: function() {
             fetch.doFetch(this.get('url')).then(json => {
                   this.set({ customers: json.Customers });
-                  this.updateTable();
               });
         }
     }
