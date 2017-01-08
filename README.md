@@ -39,6 +39,12 @@ Main('#svelte-app');
 
 In the script above we import the [Main function](https://github.com/brakmic/Svelte-TypeScript-WebPack-Boilerplate/blob/master/src/app/components/main/main.ts#L4) that takes a CSS selector to hook up the Svelte component. The definition of the component itself is located [main.sve](https://github.com/brakmic/Svelte-TypeScript-WebPack-Boilerplate/blob/master/src/app/components/main/main.sve).
 
+After a successful start the app will also provide a reference to itself in a globally available object `window.app`. 
+
+Of course, this is for testing purposes only. 
+
+<img src="http://i.imgur.com/ya9WMuH.png" width="300" height="350">
+
 There's no rule that Svelte components have to be named with a *.sve extension. It's just my own way of distinguishing between 'ordinary' HTMLs and those containing Svelte code. If you don't like this approach, simply change the regex for svelte-loader in [webpack.common.js](https://github.com/brakmic/Svelte-TypeScript-WebPack-Boilerplate/blob/master/config/webpack.common.js#L114).
 
 The Svelte component from this demo is located [here](https://github.com/brakmic/Svelte-TypeScript-WebPack-Boilerplate/blob/master/src/app/components/main/main.sve) and comprises of three parts:
