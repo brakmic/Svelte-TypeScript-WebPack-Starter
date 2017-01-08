@@ -82,7 +82,7 @@ export default {
                  { data: 'Country' },
              ],
           });
-          this.set({tableInstance: table }); // // https://svelte.technology/guide#component-set-data-
+          this.set({ tableInstance: table }); // // https://svelte.technology/guide#component-set-data-
           table.on('select', (e, dt, type, indexes) => {
               // event handling for jquery.dataTables
               // see: https://datatables.net/examples/advanced_init/dt_events.html
