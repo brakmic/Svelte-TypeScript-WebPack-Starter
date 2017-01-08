@@ -61,7 +61,7 @@ I've tried to produce a demo that does something more complex than `Hello World!
 
 The fetch-functionality is located in a [separate API](https://github.com/brakmic/Svelte-TypeScript-WebPack-Boilerplate/blob/master/src/app/api/fetch.ts) that'll be of some use to you in more complex scenarios, I hope.
 
-The handling of tabular data is located in a few [custom methods](https://github.com/brakmic/Svelte-TypeScript-WebPack-Boilerplate/blob/master/src/app/components/main/main.sve#L60) that follow [Svelte's rules](https://svelte.technology/guide#custom-methods).
+The handling of tabular data is located in a few [custom methods](https://github.com/brakmic/Svelte-TypeScript-WebPack-Boilerplate/blob/master/src/app/components/main/main.sve#L63) that follow [Svelte's rules](https://svelte.technology/guide#custom-methods).
 
 All the Styles are located [here](https://github.com/brakmic/Svelte-TypeScript-WebPack-Boilerplate/blob/master/src/app/styling/index.scss).
 
