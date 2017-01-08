@@ -1,7 +1,7 @@
 {
-  "name": "demo1",
+  "name": "svelte-typescript-webpack-boilerplate",
   "version": "1.0.0",
-  "description": "",
+  "description": "boilerplate for svelte framework",
   "main": "index.js",
   "dependencies": {
     "core-js": "^2.4.1",
@@ -120,6 +120,6 @@
     "version": "npm run build",
     "postversion": "git push && git push --tags"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Harris Brakmic",
+  "license": "MIT"
 }
