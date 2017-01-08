@@ -50,7 +50,7 @@ export default {
             tableName: 'Customers',
             url: 'http://northwind.servicestack.net/customers.json',
             tableInstance: undefined,
-            customers: []
+            customers: [],
         };
     },
     onrender: function() { // life-cycle hook
@@ -59,6 +59,9 @@ export default {
           if (!_.isEmpty(customers))           // see: https://svelte.technology/guide#component-observe-key-callback-options-
           this.updateTable();
       });
+    },
+    onteardown: function() { // cleanup life-cycle method. See: https://svelte.technology/guide#component-teardown-
+        $('#customers').remove(); // remove jQuery object
     },
     methods: {  // svelte's custom methods
                 // see: https://svelte.technology/guide#custom-methods
