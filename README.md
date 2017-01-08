@@ -20,9 +20,9 @@ This demo uses [jquery.dataTables](https://datatables.net/) and [Toastr](http://
 
 The core of the app is located in the `init` directory.
 
-* main.ts 
-* polyfills.ts
-* vendor.ts
+* [main.ts](https://github.com/brakmic/Svelte-TypeScript-WebPack-Boilerplate/blob/master/src/init/main.ts) 
+* [polyfills.ts](https://github.com/brakmic/Svelte-TypeScript-WebPack-Boilerplate/blob/master/src/init/polyfills.ts)
+* [vendor.ts](https://github.com/brakmic/Svelte-TypeScript-WebPack-Boilerplate/blob/master/src/init/vendor.ts)
 
 | File     | Function   | 
 | -------------|:---- |
