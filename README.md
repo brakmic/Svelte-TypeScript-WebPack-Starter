@@ -30,7 +30,7 @@ The core of the app is located in the `init` directory.
 | polyfills.ts | imports browser polyfills |
 | vendor.ts | imports all 3rd party scripts |
 
-In the original form `main.ts` contains only two lines of code that instantiate the demo app. In a more realistic project this script would usually comprise of several imports that'd constitute your booting mechanism.
+In its original form `main.ts` contains only two lines of code that instantiate the demo app. In a more realistic project this script would usually comprise of several imports that'd constitute your booting mechanism.
 
 ```typescript 
 import { Main } from 'app/components';
