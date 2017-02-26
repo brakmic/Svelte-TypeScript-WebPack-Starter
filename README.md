@@ -91,7 +91,13 @@ To create a development build type
 npm run build:dev
 ```
 
-Then copy the content from newly created `dist` folder to your web server.
+Afterwards, either copy the newly created `dist` folder to your web server or type 
+
+```
+npm run server:prod
+```
+
+to launch the local server on [http://localhost:8080](http://localhost:8080)
 
 For productive builds use `build:prod`.
 
