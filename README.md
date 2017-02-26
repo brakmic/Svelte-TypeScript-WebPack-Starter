@@ -30,14 +30,14 @@ The core of the app is located in the `init` directory.
 | polyfills.ts | imports browser polyfills |
 | vendor.ts | imports all 3rd party scripts |
 
-In its original form `main.ts` contains only two lines of code that instantiate the demo app. In a more realistic project this script would usually comprise of several imports that'd constitute your booting mechanism.
+`main.ts` contains these two lines of code that instantiate the app. 
 
 ```typescript 
 import { Main } from 'app/components';
 Main('#svelte-app');
 ```
 
-In the script above we import the [Main function](https://github.com/brakmic/Svelte-TypeScript-WebPack-Boilerplate/blob/master/src/app/components/main/main.ts#L4) that takes a CSS selector to hook up the Svelte component. The definition of the component itself is located [main.sve](https://github.com/brakmic/Svelte-TypeScript-WebPack-Boilerplate/blob/master/src/app/components/main/main.sve).
+We import the [Main function](https://github.com/brakmic/Svelte-TypeScript-WebPack-Boilerplate/blob/master/src/app/components/main/main.ts#L4) that takes a CSS selector to hook up the Svelte component. The definition of the component itself is located [main.sve](https://github.com/brakmic/Svelte-TypeScript-WebPack-Boilerplate/blob/master/src/app/components/main/main.sve).
 
 After a successful start the app will also provide a [reference](https://github.com/brakmic/Svelte-TypeScript-WebPack-Boilerplate/blob/master/src/app/components/main/main.ts#L9) to itself in a globally available object `window.app`. 
 
