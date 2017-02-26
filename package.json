@@ -1,7 +1,7 @@
 {
-  "name": "svelte-typescript-webpack-boilerplate",
+  "name": "svelte-typescript-webpack-starter",
   "version": "1.0.0",
-  "description": "boilerplate for svelte framework",
+  "description": "Svelte framework starter app",
   "main": "index.js",
   "dependencies": {
     "core-js": "^2.4.1",
