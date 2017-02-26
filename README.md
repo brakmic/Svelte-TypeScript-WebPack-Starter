@@ -83,7 +83,7 @@ Then type
 npm run start:server
 ```
 
-to run demo app in webpack-dev-server.
+to run the app on [http://localhost:3000](http://localhost:3000).
 
 To create a development build type 
 
