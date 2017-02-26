@@ -97,7 +97,7 @@ Afterwards, either copy the newly created `dist` folder to your web server or ty
 npm run server:prod
 ```
 
-to launch the local server on [http://localhost:8080](http://localhost:8080)
+to launch a local server on [http://localhost:8080](http://localhost:8080)
 
 For productive builds use `build:prod`.
 
