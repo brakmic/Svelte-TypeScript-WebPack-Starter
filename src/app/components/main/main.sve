@@ -53,14 +53,14 @@ export default {
             customers: [],
         };
     },
-    onrender: function() { // life-cycle hook
+    oncreate: function() { // life-cycle hook
       this.initTable();    // see: https://svelte.technology/guide#lifecycle-hooks
       this.observe('customers', customers => { // watch for changes in 'customers'
           if (!_.isEmpty(customers))           // see: https://svelte.technology/guide#component-observe-key-callback-options-
           this.updateTable();
       });
     },
-    onteardown: function() { // cleanup life-cycle method. See: https://svelte.technology/guide#component-teardown-
+    ondestroy: function() { // cleanup life-cycle method. See: https://svelte.technology/guide#component-teardown-
         $('#customers').remove(); // remove jQuery object
     },
     methods: {  // svelte's custom methods
