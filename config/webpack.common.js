@@ -25,7 +25,7 @@ const HMR = helpers.hasProcessFlag('hot');
 const METADATA = {
   port: 3000,
   host: 'localhost',
-  title: 'svelte-demo1',
+  title: 'svelte-starter',
   urlPrefix: '/',
   baseUrl: '',
   isDevServer: helpers.isWebpackDevServer(),
@@ -151,9 +151,8 @@ module.exports = function(options) {
         test: /index\.scss$/,
         use: ExtractTextPlugin.extract(
           {
-            fallbackLoader: 'style-loader',
-            exclude: /node_modules/,
-            loader: 'css-loader!sass-loader?sourceMap'
+            fallback: 'style-loader',
+            use: 'css-loader!sass-loader?sourceMap'
           })
       },
       {
