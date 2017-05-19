@@ -2,7 +2,7 @@
 
 This is a [Svelte](https://svelte.technology/) Starter-Project containing: 
 
-* **Svelte v1.19.1**
+* **Svelte v1.20.2**
 * TypeScript
 * WebPack
 * Bootstrap 3
@@ -13,7 +13,7 @@ This is a [Svelte](https://svelte.technology/) Starter-Project containing:
 
 ## Demo app
 
-<img src="http://i.giphy.com/26FKSF8fXF2JD7CZa.gif">
+![svelte_demo](http://i.giphy.com/26FKSF8fXF2JD7CZa.gif)
 
 This demo uses [jquery.dataTables](https://datatables.net/) and [Toastr](http://codeseven.github.io/toastr/) plugins.
 
