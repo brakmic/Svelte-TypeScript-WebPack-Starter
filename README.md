@@ -2,7 +2,7 @@
 
 This is a [Svelte](https://svelte.technology/) Starter-Project containing: 
 
-* **Svelte v1.22.2**
+* **Svelte v1.22.5**
 * TypeScript
 * WebPack
 * Bootstrap 3
