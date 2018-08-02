@@ -2,14 +2,15 @@
 
 This is a [Svelte](https://svelte.technology/) Starter-Project containing: 
 
-* **Svelte v2.9.7**
+* **Svelte v2.9.9**
 * TypeScript
+* jQuery 3
 * WebPack 4
 * Bootstrap 3
 * Font-Awesome
 * RxJS
 * Lodash
-* node-fetch
+* whatwg-fetch
 
 ## Demo app
 
