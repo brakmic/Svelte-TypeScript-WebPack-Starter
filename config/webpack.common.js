@@ -8,7 +8,7 @@ const path = require('path');
 const AssetsPlugin = require('assets-webpack-plugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
-const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
+// const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 // const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
 const HtmlElementsPlugin = require('./html-elements-plugin');
@@ -40,15 +40,42 @@ module.exports = function(options) {
  var isProd = options.env === 'production';
  return {
 
+  mode: 'development',
+
    /*
    * The entry point for bundles
    *
    * See: http://webpack.github.io/docs/configuration.html#entry
    */
   entry: {
+    'whatwg-fetch': 'whatwg-fetch',
     'polyfills': './src/init/polyfills.ts',
     'vendor': './src/init/vendor.ts',
     'main': './src/init/main.ts'
+  },
+
+  optimization: {
+    splitChunks: {
+      chunks: 'async',
+      minSize: 30000,
+      maxSize: 0,
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      automaticNameDelimiter: '~',
+      name: true,
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    }
   },
 
   /*
@@ -109,11 +136,11 @@ module.exports = function(options) {
       /*
       * Parse Svelte components
       * See: https://github.com/sveltejs/svelte-loader
-      */ 
+      */
       {
         test: /\.sve$/,
-        use: 'svelte-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        use: 'svelte-loader'
       },
       {
           test: /datatables\.net.*/,
@@ -146,14 +173,6 @@ module.exports = function(options) {
         test: /\.scss$/,
         use: ['to-string-loader','raw-loader', 'sass-loader']
         // loaders: ['raw-loader', 'sass-loader']
-      },
-      {
-        test: /index\.scss$/,
-        use: ExtractTextPlugin.extract(
-          {
-            fallback: 'style-loader',
-            use: 'css-loader!sass-loader?sourceMap'
-          })
       },
       {
         test: /\.woff(2)?(\?v=.+)?$/,
@@ -193,7 +212,8 @@ module.exports = function(options) {
     new ProvidePlugin({
         $: "jquery",
         jQuery: "jquery",
-        "window.jQuery": "jquery"
+        "window.jQuery": "jquery",
+        "window.$": 'jquery'
     }),
 
     /**
@@ -213,7 +233,7 @@ module.exports = function(options) {
       }
     }),
 
-    new ExtractTextPlugin({ filename: 'index.css', disable: false, allChunks: true }),
+    //new ExtractTextPlugin({ filename: 'index.css', disable: false, allChunks: true }),
 
     new AssetsPlugin({
         path: helpers.root('dist'),
@@ -222,35 +242,6 @@ module.exports = function(options) {
     }),
 
     new DashboardPlugin(),
-     /*
-       * Plugin: CommonsChunkPlugin
-       * Description: Shares common code between the pages.
-       * It identifies common modules and put them into a commons chunk.
-       *
-       * See: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
-       * See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
-       */
-      new CommonsChunkPlugin({
-        name: 'polyfills',
-        chunks: ['polyfills']
-      }),
-      // This enables tree shaking of the vendor modules
-      new CommonsChunkPlugin({
-        name: 'vendor',
-        chunks: ['main'],
-        minChunks: module => /node_modules\//.test(module.resource)
-      }),
-    /*
-     * Plugin: CommonsChunkPlugin
-     * Description: Shares common code between the pages.
-     * It identifies common modules and put them into a commons chunk.
-     *
-     * See: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
-     * See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
-     */
-    new webpack.optimize.CommonsChunkPlugin({
-      name: ['polyfills', 'vendor'].reverse()
-    }),
 
     /*
      * Plugin: CopyWebpackPlugin
@@ -317,32 +308,6 @@ module.exports = function(options) {
       defaultAttribute: 'defer'
     }),
 
-    /*
-     * Plugin: HtmlHeadConfigPlugin
-     * Description: Generate html tags based on javascript maps.
-     *
-     * If a publicPath is set in the webpack output configuration, it will be automatically added to
-     * href attributes, you can disable that by adding a "=href": false property.
-     * You can also enable it to other attribute by settings "=attName": true.
-     *
-     * The configuration supplied is map between a location (key) and an element definition object (value)
-     * The location (key) is then exported to the template under then htmlElements property in webpack configuration.
-     *
-     * Example:
-     *  Adding this plugin configuration
-     *  new HtmlElementsPlugin({
-     *    headTags: { ... }
-     *  })
-     *
-     *  Means we can use it in the template like this:
-     *  <%= webpackConfig.htmlElements.headTags %>
-     *
-     * Dependencies: HtmlWebpackPlugin
-     */
-    new HtmlElementsPlugin({
-      headTags: require('./head-config.common')
-    }),
-
   ],
 
   /*
@@ -360,7 +325,7 @@ module.exports = function(options) {
     setImmediate: false,
     dns: 'mock',
     net: 'mock'
-  }
+  },
 
  };
 };

@@ -3,7 +3,7 @@
 // support NodeJS modules without type definitions
 declare module '*';
 
-declare var $: JQueryStatic;
+// declare var $: JQueryStatic;
 declare var ENV: string;
 declare var HMR: boolean;
 declare var System: SystemJS;
@@ -134,5 +134,5 @@ interface JQuery {
 
 interface JQueryStatic {
     confirm(options?: any);
-    confirm: any;
+    confirm: (options?: any) => any;
 }

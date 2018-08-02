@@ -39,25 +39,22 @@
 </div>
 <script>
 import * as _ from 'lodash';
-import { fetch } from 'app/api';
-import * as toastr from 'vendor/toastr/toastr.min';
-toastr.options.positionClass = 'toast-top-center';
-toastr.options.timeOut = 2000;
 
 export default {
     data: function() { // default data: https://svelte.technology/guide#default-data
         return {
+            url: '',
             tableName: 'Customers',
-            url: 'http://northwind.servicestack.net/customers.json',
             tableInstance: undefined,
             customers: [],
         };
     },
     oncreate: function() { // life-cycle hook
       this.initTable();    // see: https://svelte.technology/guide#lifecycle-hooks
-      this.observe('customers', customers => { // watch for changes in 'customers'
-          if (!_.isEmpty(customers))           // see: https://svelte.technology/guide#component-observe-key-callback-options-
-          this.updateTable();
+      this.on('state', ({ changed, current, previous }) => { // watch for changes in 'customers'
+          if (changed.customers) {         // see: https://svelte.technology/guide#component-observe-key-callback-options-
+            this.updateTable();
+          }
       });
     },
     ondestroy: function() { // cleanup life-cycle method. See: https://svelte.technology/guide#component-teardown-
@@ -82,25 +79,27 @@ export default {
                  { data: 'Country' },
              ],
           });
-          this.set({ tableInstance: table }); // // https://svelte.technology/guide#component-set-data-
+          this.set({ table: table }); // // https://svelte.technology/guide#component-set-data-
           table.on('select', (e, dt, type, indexes) => {
               // event handling for jquery.dataTables
               // see: https://datatables.net/examples/advanced_init/dt_events.html
           });
         },
         updateTable: function() {
-            const table = this.get('tableInstance'); // https://svelte.technology/guide#component-get-key-
+            const table = this.get().table; // https://svelte.technology/guide#component-get-key-
             if (!_.isNil(table)) {
                 table.clear();
-                table.rows.add(this.get('customers'));
+                table.rows.add(this.get().customers);
                 table.draw();
-                toastr.info(`Retrieved data from ${this.get('url')}`, 'Info');
             }
         },
         loadData: function() {
-            fetch.doFetch(this.get('url')).then(json => {
-                  this.set({ customers: json.Customers });
-              });
+            fetch(this.get().url).then(res => res.json())
+                 .then(json => {
+                     console.log(json);
+                     this.set({ customers: json.Customers });
+                 })
+                 .catch(err => console.log(err));
         }
     }
 }

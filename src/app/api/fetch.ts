@@ -1,6 +1,3 @@
-declare var fetch: any;
-declare var Request: any;
-declare var Headers: any;
 // use fetch for all API calls
 const doFetch = (url: string): Promise<any> => {
     return fetch(url)
